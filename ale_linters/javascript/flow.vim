@@ -28,7 +28,7 @@ function! ale_linters#javascript#flow#GetCommand(buffer) abort
     endif
 
     return fnameescape(ale_linters#javascript#flow#GetExecutable(a:buffer))
-    \   . ' check-contents --respect-pragma --json --from ale %s'
+    \   . ' --json --from ale'
 endfunction
 
 function! ale_linters#javascript#flow#Handle(buffer, lines) abort
