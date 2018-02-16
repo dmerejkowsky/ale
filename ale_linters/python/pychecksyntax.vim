@@ -14,7 +14,6 @@ function! ale_linters#python#pychecksyntax#HandleOutput(buffer, lines) abort
     let l:output = []
 
     for l:match in ale#util#GetMatches(a:lines, l:pattern)
-        echom join(l:match, "\n")
         call add(l:output, {
         \   'lnum': l:match[1] + 0,
         \   'col': l:match[2] + 0,
