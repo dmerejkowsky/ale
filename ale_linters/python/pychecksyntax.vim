@@ -10,14 +10,15 @@ function! ale_linters#python#pychecksyntax#GetCommand(buffer) abort
 endfunction
 
 function! ale_linters#python#pychecksyntax#HandleOutput(buffer, lines) abort
-    let l:pattern = '\v[a-zA-Z]+:(\d+): (.*)$'
+    let l:pattern = '\v[a-zA-Z]+:(\d+):(\d+): (.*)$'
     let l:output = []
-    echom join(a:lines, "\n")
 
     for l:match in ale#util#GetMatches(a:lines, l:pattern)
+        echom join(l:match, "\n")
         call add(l:output, {
         \   'lnum': l:match[1] + 0,
-        \   'text':  l:match[2],
+        \   'col': l:match[2] + 0,
+        \   'text':  l:match[3],
         \})
     endfor
 
