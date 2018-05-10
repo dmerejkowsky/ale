@@ -18,7 +18,7 @@ function! ale_linters#rust#cargo#GetCommand(buffer) abort
     \   ? 'check'
     \   : 'build'
 
-    return 'cargo ' . l:command . ' --frozen --message-format=json -q'
+    return 'cargo ' . l:command . ' --tests --frozen --message-format=json -q'
 endfunction
 
 call ale#linter#Define('rust', {
