@@ -50,6 +50,7 @@ function! ale_linters#rust#cargo#GetCommand(buffer, version_output) abort
     return 'cargo '
     \   . (l:use_check ? 'check' : 'build')
     \   . (l:use_all_targets ? ' --all-targets' : '')
+    \   . ' --tests'
     \   . ' --frozen --message-format=json -q'
     \   . l:default_feature
     \   . l:include_features
